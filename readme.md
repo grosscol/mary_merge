@@ -28,7 +28,7 @@ git log blake_branch
 git log avery_branch
 ```
 
-### Merge and Resolve Conflicts
+### Merge Contributions
 1. Create your own working branch from the main
 Making a branch called resolution where you will do the work merging Blake and Avery's branch.
 Doing work in branches helps keep the main branch clean.
@@ -46,14 +46,40 @@ git checkout resolution
 git merge avery_branch
 ```
 
+Output should look like:
+```txt
+Updating f6e1979..68ae9dc
+Fast-forward
+ lyrics.txt | 17 ++++++++++++++++-
+```
+
 1. Examine log after merge
 Observe how Avery's changes get applied on top of the commits already in the branch.
 ```sh
 git log
 ```
 
-2. Merge Blake's changes into resolution branch
+1. Merge Blake's changes into resolution branch
 
 ```sh
 git merge blake_branch
 ```
+
+Output should look like:
+```txt
+Auto-merging lyrics.txt
+CONFLICT (content): Merge conflict in lyrics.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+### Resolve Conflicts
+Open lyrics.txt in a text editor.
+Conflicts are indicated by chunks delimited with:
+- `<<<<<<<`
+- `=======`
+- `>>>>>>>`
+
+1.  See that the first line has a conflict between the branches.
+    This line should be on two lines, and one editor has made that change while the other has not.
+    Resolve this conflict by choosing the 
+
